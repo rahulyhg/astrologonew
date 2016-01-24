@@ -110,7 +110,7 @@ html[xmlns] .slides {display: block;}
 	top:0;
 	width:100%;
 	height:100%;
-	background-image:url(/img//slider/caption_img1.png);
+	background-image:url(/img/slider/caption_img1.png);
 	background-repeat:no-repeat;
 	background-size:cover;
 }
@@ -124,7 +124,7 @@ html[xmlns] .slides {display: block;}
 	bottom:-20px;
 	width:100%;
 	height:100%;
-	background-image:url(/img//slider/caption_img2.png);
+	background-image:url(/img/slider/caption_img2.png);
 	background-repeat:no-repeat;
 	background-size:cover;
 }

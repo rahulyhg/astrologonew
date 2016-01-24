@@ -7,8 +7,8 @@ window.jQuery = window.$ = jQuery;
 /*	STYLE SWITCHER
 /*-----------------------------------------------------------------------------------*/
 jQuery(document).ready(function() {
-	jQuery('<script src="js/style_switcher.js" type="text/javascript"></script>').appendTo('head');
-	jQuery('<link href="css/style-switcher.css" rel="stylesheet" type="text/css" >').appendTo('head');
+	//jQuery('<script src="js/style_switcher.js" type="text/javascript"></script>').appendTo('head');
+	//jQuery('<link href="css/style-switcher.css" rel="stylesheet" type="text/css" >').appendTo('head');
 });
 
 
@@ -18,8 +18,8 @@ jQuery(document).ready(function() {
 /*-----------------------------------------------------------------------------------*/
 jQuery(window).load(function () {
 	//Preloader
-	setTimeout("jQuery('#preloader').animate({'opacity' : '0'},300,function(){jQuery('#preloader').hide()})",800);
-	setTimeout("jQuery('.page_block').animate({'opacity' : '1'},500)",800);
+	setTimeout("jQuery('#preloader').animate({'opacity' : '0'},10,function(){jQuery('#preloader').hide()})",1);
+	setTimeout("jQuery('.page_block').animate({'opacity' : '1'},500)",1);
 
 });
 

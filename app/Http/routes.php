@@ -79,3 +79,8 @@ Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 // AStro test...
 Route::get('astro', 'Astro\AstroController@index');
+
+Route::get('contacts', 'Astro\ContactsController@index');
+Route::post('contacts', 'Astro\ContactsController@store');
+
+

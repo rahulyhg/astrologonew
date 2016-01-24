@@ -7,6 +7,15 @@ if (!function_exists('classActivePath')) {
 	}
 }
 
+
+if (!function_exists('classActivePath2')) {
+	function classActivePath2($path)
+	{
+		return Request::is($path) ? ' active ' : '';
+	}
+}
+
+
 if (!function_exists('classActiveSegment')) {
 	function classActiveSegment($segment, $value)
 	{

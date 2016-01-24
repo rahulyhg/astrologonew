@@ -8,13 +8,11 @@ class AstroController extends Controller
 {
 
 
-    public function index()
+     public function index()
     {
-       // print "astro";
+        // print "astro";
         return view('astro.index');
     }
-
-
 
 
 
