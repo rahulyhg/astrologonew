@@ -251,6 +251,7 @@ jQuery(document).ready(function() {
 /*-----------------------------------------------------------------------------------*/
 /*	FLICKR
 /*-----------------------------------------------------------------------------------*/
+/*
 jQuery(document).ready(function() {
 	$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?id=90412460@N00&lang=en-us&format=json&jsoncallback=?", function(data){
 		$.each(data.items, function(i,item){
@@ -262,7 +263,7 @@ jQuery(document).ready(function() {
 	});
 });
 
-
+*/
 
 
 

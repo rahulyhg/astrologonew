@@ -171,6 +171,8 @@ return [
 		App\Services\Html\HtmlServiceProvider::class,
 		Bestmomo\Filemanager\FilemanagerServiceProvider::class,
 
+		Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class
+
 	],
 
 	/*

@@ -12,7 +12,8 @@ class ContactsRequest extends Request {
         return [
             'name' => 'required|max:100',
             'email' => 'required|email',
-            'message' => 'required|max:1000'
+            'message' => 'required|max:1000',
+            'g-recaptcha-response' => 'captcha' //required|captcha
         ];
     }
 

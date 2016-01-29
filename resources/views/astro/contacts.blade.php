@@ -43,6 +43,8 @@
                     @endif
 
 
+
+
                     @if(!session()->has('ok'))
                     {!! Form::open(['role' => 'form']) !!}
 
@@ -51,6 +53,9 @@
                     {!! Form::control('textarea', '', 'message', $errors, trans('astro/contacts.message')) !!}
 
 
+                        {!! app('captcha')->display() !!}
+
+                    <br>
                     {!! Form::submit(trans('astro/contacts.submit')) !!}
 
 
@@ -67,6 +72,8 @@
                 <li><b class="glyphicon glyphicon-ok"></b><span><a href="mailto:mail@compname.com" alt="">mail@compname.com</a></span></li>
                 <li><b class="glyphicon glyphicon-ok"></b><span><a href="javascript:void(0);" alt="">{{config('social.twitter')}}</a></span></li>
                 <li><b class="glyphicon glyphicon-ok"></b><span><a href="javascript:void(0);">{{config('social.facebook')}}</a></span></li>
+
+
             </ul><!-- //Contact Info -->
         </div>
     </div>
