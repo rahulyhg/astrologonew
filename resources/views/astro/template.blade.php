@@ -11,37 +11,34 @@
 
     <link rel="shortcut icon" href="/images/favicon.ico">
     <!-- CSS STYLES -->
-
     {!! HTML::style('https://yastatic.net/bootstrap/3.3.4/css/bootstrap.min.css') !!}
     {!! HTML::style('/css/prettyPhoto.css') !!}
     {!! HTML::style('/css/flexslider.css') !!}
     <link href="/css/animate.css" rel="stylesheet" type="text/css" media="all"/>
     {!! HTML::style('/css/style.css') !!}
-    <link href="/css/colors/" rel="stylesheet" type="text/css" id="colors"/>
-    <!-- FONTS -->
 
+    <!-- FONTS -->
     {!! HTML::style('http://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic') !!}
     {!! HTML::style('http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic') !!}
 
-    <!-- SCRIPTS -->
-
+   <!-- SCRIPTS -->
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <!--[if IE]><html class="ie" lang="{{config('app.locale')}}"> <![endif]-->
 
-<!-- delete
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>
-    <script src="/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="/js/jquery.prettyPhoto.js" type="text/javascript"></script>
-    <script src="/js/jquery.isotope.min.js" type="text/javascript"></script>
-    <script src="/js/sorting.js" type="text/javascript"></script>
-    <script src="/js/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="/js/jquery.twitter.js" type="text/javascript"></script>
-    <script src="/js/superfish.js" type="text/javascript"></script>
-    <script src="/js/jquery.flexslider-min.js" type="text/javascript"></script>
-    <script src="/js/animate.js" type="text/javascript"></script>
-    <script src="/js/myscript.js" type="text/javascript"></script>
-    -->
+    <!-- delete
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>
+        <script src="/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="/js/jquery.prettyPhoto.js" type="text/javascript"></script>
+        <script src="/js/jquery.isotope.min.js" type="text/javascript"></script>
+        <script src="/js/sorting.js" type="text/javascript"></script>
+        <script src="/js/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="/js/jquery.twitter.js" type="text/javascript"></script>
+        <script src="/js/superfish.js" type="text/javascript"></script>
+        <script src="/js/jquery.flexslider-min.js" type="text/javascript"></script>
+        <script src="/js/animate.js" type="text/javascript"></script>
+        <script src="/js/myscript.js" type="text/javascript"></script>
+        -->
 
     {!! HTML::script('http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js') !!}
     {!! HTML::script('https://yastatic.net/bootstrap/3.3.4/js/bootstrap.min.js') !!}
@@ -67,18 +64,18 @@
     <div class="container page_block"><!-- WRAPPER -->
 
 
-<div style="float: right;margin-right: 220px" class="soc">
-        <div style="position: fixed;">
-            <ul class="top_social">
-                <li><a class="soc1" href="javascript:void(0);" alt=""></a></li>
-              <!--  <li><a class="soc2" href="javascript:void(0);" alt=""></a></li>-->
-                <li><a class="soc3" href="https://twitter.com/astralogos" title="Twitter" target="_blank"></a></li>
-                <li><a class="soc4" href="javascript:void(0);" alt=""></a></li>
-                <li><a class="soc5" href="javascript:void(0);" alt=""></a></li>
-                <li><a class="soc6" href="javascript:void(0);" alt=""></a></li>
-            </ul>
+        <div style="float: right;margin-right: 220px" class="soc">
+            <div style="position: fixed;">
+                <ul class="top_social">
+                    <li><a class="soc1" href="javascript:void(0);" alt=""></a></li>
+                    <!--  <li><a class="soc2" href="javascript:void(0);" alt=""></a></li>-->
+                    <li><a class="soc3" href="https://twitter.com/astralogos" title="Twitter" target="_blank"></a></li>
+                    <li><a class="soc4" href="javascript:void(0);" alt=""></a></li>
+                    <li><a class="soc5" href="javascript:void(0);" alt=""></a></li>
+                    <li><a class="soc6" href="javascript:void(0);" alt=""></a></li>
+                </ul>
+            </div>
         </div>
-</div>
 
 
 
@@ -139,11 +136,10 @@
                             </li>
                             <li class="sub-menu c4" ><a href="javascript:void(0);" title="">{{ trans('astro/menu.link4') }}</a>
                                 <ul>
-                                    <li><a href="portfolio1.html"><span>-</span>Натальная астрология</a></li>
-                                    <li><a href="portfolio2.html"><span>-</span>Взаимоотношения</a></li>
-                                    <li><a href="portfolio3.html"><span>-</span>Финансы</a></li>
-                                    <li><a href="portfolio4.html"><span>-</span>Общая информация</a></li>
-
+                                    <li><a href="/articles/category1/"><span>-</span>Натальная астрология</a></li>
+                                    <li><a href="/articles/category2/"><span>-</span>Взаимоотношения</a></li>
+                                    <li><a href="/articles/category3/"><span>-</span>Финансы</a></li>
+                                    <li><a href="/articles/category1/"><span>-</span>Общая информация</a></li>
                                 </ul>
                             </li>
 
@@ -185,11 +181,7 @@
 
 
 
-
             @yield('main')
-
-
-
 
 
             <footer class="full_width footer_block">

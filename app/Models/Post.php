@@ -44,4 +44,14 @@ class Post extends Model  {
 		return $this->hasMany('App\Models\Comment');
 	}
 
+
+
+	public function category()
+	{
+		//hasMany select * from `categories` where `categories`.`post_id` in
+		return $this->belongsTo('App\Models\Category');
+	}
+
+
+
 }

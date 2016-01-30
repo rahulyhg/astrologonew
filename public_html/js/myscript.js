@@ -232,13 +232,13 @@ jQuery(document).ready(function() {
 /*-----------------------------------------------------------------------------------*/
 jQuery(document).ready(function() {	
 	jQuery('.tweet_module.sidebar').tweet({
-		modpath: 'twitter/',
+		modpath: '/twitter/',
 		count: 2,
 		username : 'templatesmint'
 	});
 	
 	jQuery('footer .tweet_module').tweet({
-		modpath: 'twitter/',
+		modpath: '/twitter/',
 		count: 3,
 		username : 'templatesmint'
 	});

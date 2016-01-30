@@ -9,7 +9,7 @@ Route::get('language/{lang}', 'HomeController@language')->where('lang', '[A-Za-z
 
 
 // Admin
-Route::get('admin', [
+Route::get('kadmin', [
 	'uses' => 'AdminController@admin',
 	'as' => 'admin',
 	'middleware' => 'admin'
@@ -24,7 +24,7 @@ Route::get('medias', [
 
 // Blog
 Route::get('blog/order', ['uses' => 'BlogController@indexOrder', 'as' => 'blog.order']);
-Route::get('articles', 'BlogController@indexFront');
+Route::get('articles2', 'BlogController@indexFront');
 Route::get('blog/tag', 'BlogController@tag');
 Route::get('blog/search', 'BlogController@search');
 
@@ -77,10 +77,22 @@ Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 
-// AStro test...
+/**************************************************************************/
+
+// ASTRO
 Route::get('astro', 'Astro\AstroController@index');
 
+//контакты
 Route::get('contacts', 'Astro\ContactsController@index');
 Route::post('contacts', 'Astro\ContactsController@store');
 
+//статьи
+Route::get('articles', 'Astro\ArticlesController@indexFront');
+Route::resource('article', 'Astro\ArticlesController');
+Route::get('article/order', ['uses' => 'Astro\ArticlesController@indexOrder', 'as' => 'article.order']);
+Route::get('articles/search', 'Astro\ArticlesController@search');
+Route::get('articles/{slug}', 'Astro\ArticlesController@indexFront');
 
+
+//Твиттер
+Route::resource('twitter', 'Astro\TwitterController');

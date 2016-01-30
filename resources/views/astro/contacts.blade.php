@@ -6,15 +6,15 @@
 
 
 
-        <!-- BREADCRUMBS -->
+<!-- BREADCRUMBS -->
 <section class="full_width breadcrumbs_block clearfix">
     <div class="breadcrumbs_content">
         <h2 class="pull-left">{{ trans('astro/contacts.title') }}</h2>
-
     </div>
     <div class="overlay"></div>
     <div class="overlay_black"></div>
-</section><!-- //BREADCRUMBS -->
+</section>
+<!-- //BREADCRUMBS -->
 
 <!-- Contact Info -->
 <section class="contacts_block">
@@ -47,14 +47,11 @@
 
                     @if(!session()->has('ok'))
                     {!! Form::open(['role' => 'form']) !!}
-
                     {!! Form::control('text', '', 'name', $errors, trans('astro/contacts.name')) !!}
                     {!! Form::control('email', '', 'email', $errors, 'E-mail') !!}
                     {!! Form::control('textarea', '', 'message', $errors, trans('astro/contacts.message')) !!}
 
-
                         {!! app('captcha')->display() !!}
-
                     <br>
                     {!! Form::submit(trans('astro/contacts.submit')) !!}
 

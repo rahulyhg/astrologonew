@@ -13,6 +13,7 @@ body {
 	color: #797979;
 }
 
+
 a, input, select, textarea {
 	vertical-align:top;
 	outline:none !important;
@@ -192,7 +193,7 @@ section {padding-bottom: 70px;
 	font-weight: 400;
 	line-height: 22px;
 	font-size: 15px;
-	color:#c5c5c5 !important;
+	color:#fff !important;
 	text-shadow: none;
 	background: #5c6bc0 !important;
 	transition: all 0.3s ease-in-out;
@@ -825,31 +826,25 @@ footer .recent_posts li .date_block {color:#656464;}
 /*	CONTACT FORM
 /*-----------------------------------------------------------------------------------*/
 textarea,
-input {
-	width:218px;
-	margin:0 1px 4px 0;
-	margin-top:0 !important;
-	padding: 10px 20px;
-	text-transform:none;
-	font-family: 'Roboto', sans-serif;
-	font-weight:400;
-	line-height:18px;
-	font-size: 13px;
-	color: #666;
-	font-style:normal;
-	border-radius: 0;	
-	background: none;
-	border: 1px solid #ddd;
-	box-shadow: none;	  
+input[type="text"],input[type="email"] {
+
+	width:98% !important;
+
+
+	border-radius: 0 !important;	
+
+	border: 1px solid #ddd !important;
+	box-shadow: none !important;	  
 }
 textarea {
-	overflow:hidden;
-	min-height:95px;
-	resize: none;
-	width:441px;
+	
+	overflow:hidden !important;
+	min-height:95px !important;
+	resize: none !important;
+
 }
 textarea,
-input[type="text"].last {margin-right:0;
+input[type="text"].last {margin-right:0 !important;
 }
 
 
