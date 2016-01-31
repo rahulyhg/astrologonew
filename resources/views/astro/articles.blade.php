@@ -1,28 +1,16 @@
 @extends('astro.template')
 
+@section('title', trans('astro/articles.title'))
+
 @section('main')
 
+@include('astro.panel', ['left' => trans('astro/articles.title'), 'right' => 'search'])
 
-        <!-- BREADCRUMBS -->
-<section class="full_width breadcrumbs_block clearfix">
-    <div class="breadcrumbs_content">
-        <h2 class="pull-left">{{ trans('astro/contacts.title') }}</h2>
-    </div>
-    <div class="pull-right">
-        <div class="row">
-            <div class="col-lg-12">
-                {!! Form::open(['url' => 'articles/search', 'method' => 'get', 'role' => 'form', 'class' => 'pull-right']) !!}
 
-                <input type="text" name="search" placeholder="{{trans('astro/articles.search')}}">
 
-                <!--{!! Form::control('text', null, 'search', $errors, null, null, null, trans('astro/articles.search')) !!}-->
 
-                {!! Form::close() !!}
-            </div>
-        </div>
-    </div>
-</section>
-<!-- //BREADCRUMBS -->
+
+
 
 
 @if (isset($info))

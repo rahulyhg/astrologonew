@@ -155,7 +155,9 @@ class ArticlesController extends Controller {
 	{
 		$user = $auth->user();
 
-		return view('astro.article',  array_merge($this->blog_gestion->show($slug), compact('user')));
+            return view('astro.article', array_merge($this->blog_gestion->show($slug), compact('user')));
+
+
 	}
 
 	/**

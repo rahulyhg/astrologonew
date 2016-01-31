@@ -61,6 +61,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	public function accessMediasAll()
 	{
+
 	    return $this->role->slug == 'admin';
 	}
 

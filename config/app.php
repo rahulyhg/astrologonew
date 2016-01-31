@@ -173,6 +173,8 @@ return [
 
 		Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
 		Barryvdh\Debugbar\ServiceProvider::class,
+		Intervention\Image\ImageServiceProvider::class,
+		Jenssegers\Agent\AgentServiceProvider::class,
 
 	],
 
@@ -224,7 +226,8 @@ return [
 		'Form'		=> Collective\Html\FormFacade::class,
 		'HTML'		=> Collective\Html\HtmlFacade::class,
 		'Debugbar' => Barryvdh\Debugbar\Facade::class,
-
+		'Image' => Intervention\Image\Facades\Image::class,
+		'Agent' => Jenssegers\Agent\Facades\Agent::class,
 	],
 
 ];

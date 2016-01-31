@@ -7,6 +7,7 @@ use App\Repositories\ContactsRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests\ContactsRequest;
 
+
 class ContactsController extends Controller {
 
 
@@ -14,7 +15,6 @@ class ContactsController extends Controller {
     {
 
         return view('astro.contacts');
-
 
     }
 
@@ -27,11 +27,6 @@ class ContactsController extends Controller {
 
        // print $req[email];// Почта!!!
 
-
-        print $req['email'];
-
-        //print_r($req);
-        //exit;
 
        // {{config('mail.username')}}
         /*

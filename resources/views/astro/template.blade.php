@@ -2,9 +2,10 @@
 <html lang="{{config('app.locale')}}">
 <head>
     <meta charset="utf-8">
-    <title>{{ trans('front/site.title') }}</title>
+    <title>
+        @yield('title', trans('front/site.title') ) </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content="@yield('description', trans('front/site.title') ) </title>">
     <meta name="author" content="">
 
     @yield('head')
@@ -14,17 +15,20 @@
     {!! HTML::style('https://yastatic.net/bootstrap/3.3.4/css/bootstrap.min.css') !!}
     {!! HTML::style('/css/prettyPhoto.css') !!}
     {!! HTML::style('/css/flexslider.css') !!}
-    <link href="/css/animate.css" rel="stylesheet" type="text/css" media="all"/>
+    {!! HTML::style('/css/animate.css') !!}
     {!! HTML::style('/css/style.css') !!}
 
-    <!-- FONTS -->
+            <!-- FONTS -->
     {!! HTML::style('http://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic') !!}
     {!! HTML::style('http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic') !!}
 
-   <!-- SCRIPTS -->
+            <!-- SCRIPTS -->
     <!--[if IE]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    <!--[if IE]><html class="ie" lang="{{config('app.locale')}}"> <![endif]-->
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if IE]>
+    <html class="ie" lang="{{config('app.locale')}}">
+    <![endif]-->
 
     <!-- delete
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>
@@ -78,111 +82,16 @@
         </div>
 
 
-
-        <div class="wrapper"><!-- HEADER -->
-            <header><!-- LOGO -->
-
+        <div class="wrapper">
+            <!-- HEADER -->
+            <header>
+                <!-- LOGO -->
                 <div class="logo"><a href="/astro/" alt="">Astrologo</a></div>
-                <!-- LOGO --><!-- MENU -->
-
-                <div class="menu_block clearfix"><!-- RESPONSIVE BUTTON MENU -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse"
-                                data-target=".navbar-collapse"><span class="glyphicon glyphicon-align-justify"></span>
-                        </button>
-                    </div>
-                    <!-- //RESPONSIVE BUTTON MENU -->
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            <li class="first {!! classActivePath2('/') !!} c1" ><a href="/" title="">
-                                    <span class="glyphicon glyphicon-home" aria-hidden="true" title="{{ trans('astro/menu.link1') }}"></span></a></li>
-                            <li class="sub-menu c2"><a href="javascript:void(0);" title="">{{ trans('astro/menu.link2') }}</a><!-- Mega Menu -->
-                                <ul class="mega_menu left">
-                                    <li class="col" style="width: 55%"><h5>Профессиональные</h5>
-                                        <ol>
-                                            <li><a href="typography.html"><span>-</span>Персональный гороскоп</a></li>
-                                            <li><a href="shortcodes.html"><span>-</span>Гороскоп совместимости</a></li>
-                                            <li><a href="full-width.html"><span>-</span>Гороскоп выбора профессии</a></li>
-                                            <li><a href="full-width.html"><span>-</span>Астрология для бизнеса</a></li>
-                                            <li><a href="full-width.html"><span>-</span>Гороскоп способностей ребенка</a></li>
-
-                                            <li><a href="full-width.html"><span>-</span>Кармический гороскоп</a></li>
-                                            <li><a href="full-width.html"><span>-</span>Гороскоп на месяц</a></li>
-                                            <li><a href="full-width.html"><span>-</span>Персональный астропрогноз <nobr>на <b>2016</b> год</nobr> </a></li>
-                                        </ol>
-                                    </li>
-
-                                    <li class="col" style="width: 45%"><h5>Общие</h5>
-                                        <ol>
-                                            <li><a href="typography.html"><span>-</span>Гороскоп на каждый день</a></li>
-                                            <li><a href="full-width.html"><span>-</span>Черты характера</a></li>
-                                            <li><a href="shortcodes.html"><span>-</span>Натальная карта</a></li>
-                                            <li><a href="full-width.html"><span>-</span>Влияние планет</a></li>
-                                            <li><a href="full-width.html"><span>-</span>Влияние луны</a></li>
-                                            <li><a href="full-width.html"><span>-</span>Ваша визитка</a></li>
-
-                                        </ol>
-                                    </li>
-
-                                </ul>
-                                <!-- //Mega Menu --></li>
-                            <li class="sub-menu c3" ><a href="javascript:void(0);" title="">{{ trans('astro/menu.link3') }}</a>
-                                <ul>
-                                    <li><a href="about.html"><span>-</span>Лунные дни</a></li>
-                                    <li><a href="shop.html"><span>-</span>Движение луны</a></li>
-                                    <li><a href="product-page.html"><span>-</span>Лунный календарь <nobr>на 2016 год</nobr></a></li>
-
-                                </ul>
-                            </li>
-                            <li class="sub-menu c4" ><a href="javascript:void(0);" title="">{{ trans('astro/menu.link4') }}</a>
-                                <ul>
-                                    <li><a href="/articles/category1/"><span>-</span>Натальная астрология</a></li>
-                                    <li><a href="/articles/category2/"><span>-</span>Взаимоотношения</a></li>
-                                    <li><a href="/articles/category3/"><span>-</span>Финансы</a></li>
-                                    <li><a href="/articles/category1/"><span>-</span>Общая информация</a></li>
-                                </ul>
-                            </li>
-
-
-                            <li class="last {!!classActivePath2('conta') !!} c5"><a href="/contas/" title="">{{ trans('astro/menu.link5') }}</a></li>
-                            <li class="last {!!classActivePath2('contacts') !!} c6" ><a href="/contacts/" title="">{{ trans('astro/menu.link6') }}</a></li>
-                            <!--
-                            <li class="sub-menu c5"><a href="javascript:void(0);" title="">Blog</a>
-                                <ul>
-                                    <li><a href="blog.html"><span>-</span>Blog with sidebar</a></li>
-                                    <li><a href="blog-post.html"><span>-</span>Blog Post</a></li>
-                                </ul>
-                            </li>
-                            <li class="last c6"><a href="contacts.html" title="">Contacts</a></li>
--->
-
-                            <li class="sub-menu c7" style="float: right"><a href="javascript:void(0);" title="">
-                                    <img width="25" height="25" alt="{{ session('locale') }}"  src="{!! asset('img/' . session('locale') . '-flag.png') !!}" /><b class="caret"></b>  </a>
-
-                                <ul>
-                                    @foreach ( config('app.languages') as $user)
-                                        @if($user !== config('app.locale'))
-                                            <li><a href="{!! url('language') !!}/{{ $user }}"><img width="25" height="25" alt="{{ $user }}" src="{!! asset('img/' . $user . '-flag.png') !!}"></a></li>
-                                        @endif
-                                    @endforeach
-                                </ul>
-                            </li>
-
-
-
-
-                        </ul>
-                    </div>
-                </div>
-
-
-                <!-- //MENU --></header>
-
-
-
+                <!-- LOGO -->
+                @include('astro.menu')
+            </header>
 
             @yield('main')
-
 
             <footer class="full_width footer_block">
                 <div class="row" data-animated="fadeInUp"><!-- LATEST NEWS -->
@@ -261,6 +170,9 @@
         <!-- WRAPPER --></div>
     <!-- //CONTAINER --></div>
 <!-- //PAGE -->
+
+
+@yield('scripts')
 
 </body>
 </html>

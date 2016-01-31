@@ -10,7 +10,9 @@
         "laravelcollective/html": "5.2.*",
         "bestmomo/filemanager": "1.1.2",
 		"anhskohbo/no-captcha": "2.*",
-        "barryvdh/laravel-debugbar": "^2.1"
+        "barryvdh/laravel-debugbar": "^2.1",
+        "intervention/image": "^2.3",
+        "jenssegers/agent": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -15,9 +15,9 @@ Route::get('kadmin', [
 	'middleware' => 'admin'
 ]);
 
-Route::get('medias', [
+Route::get('kadmin/medias', [
 	'uses' => 'AdminController@filemanager',
-	'as' => 'medias',
+	'as' => 'kadmin/medias',
 	'middleware' => 'redac'
 ]);
 
@@ -49,14 +49,14 @@ Route::resource('contact', 'ContactController', [
 
 
 // User
-Route::get('user/sort/{role}', 'UserController@indexSort');
+Route::get('kadmin/user/sort/{role}', 'UserController@indexSort');
 
-Route::get('user/roles', 'UserController@getRoles');
-Route::post('user/roles', 'UserController@postRoles');
+Route::get('kadmin/user/roles', 'UserController@getRoles');
+Route::post('kadmin/user/roles', 'UserController@postRoles');
 
 Route::put('userseen/{user}', 'UserController@updateSeen');
 
-Route::resource('user', 'UserController');
+Route::resource('kadmin/user', 'UserController');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
@@ -93,6 +93,21 @@ Route::get('article/order', ['uses' => 'Astro\ArticlesController@indexOrder', 'a
 Route::get('articles/search', 'Astro\ArticlesController@search');
 Route::get('articles/{slug}', 'Astro\ArticlesController@indexFront');
 
-
 //Твиттер
 Route::resource('twitter', 'Astro\TwitterController');
+
+//Kadmin
+Route::get('kadmin/login', 'Auth\AuthController@getLogin');
+Route::post('kadmin/login', 'Auth\AuthController@postLogin');
+Route::get('kadmin/logout', 'Auth\AuthController@getLogout');
+
+Route::resource('kadmin/contacts', 'Kadmin\ContactsController', [
+	'except' => ['show', 'edit']
+]);
+
+Route::get('kadmin/articles/order', ['uses' => 'Kadmin\ArticlesController@indexOrder', 'as' => 'kadmin.articles.order']);
+Route::resource('kadmin/articles', 'Kadmin\ArticlesController');
+
+Route::get('kadmin/category/order', ['uses' => 'Kadmin\CategoryController@indexOrder', 'as' => 'kadmin.category.order']);
+Route::resource('kadmin/category', 'Kadmin\CategoryController');
+Route::put('kadmin/postactivecategory/{id}', 'Kadmin\CategoryController@updateActive');

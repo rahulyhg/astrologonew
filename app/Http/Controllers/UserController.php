@@ -21,7 +21,7 @@ class UserController extends Controller {
 	 * The RoleRepository instance.
 	 *
 	 * @var App\Repositories\RoleRepository
-	 */	
+	 */
 	protected $role_gestion;
 
 	/**
@@ -61,11 +61,11 @@ class UserController extends Controller {
 	public function indexSort($role)
 	{
 		$counts = $this->user_gestion->counts();
-		$users = $this->user_gestion->index(4, $role); 
+		$users = $this->user_gestion->index(4, $role);
 		$links = $users->render();
 		$roles = $this->role_gestion->all();
 
-		return view('back.users.index', compact('users', 'links', 'counts', 'roles'));		
+		return view('back.users.index', compact('users', 'links', 'counts', 'roles'));
 	}
 
 	/**
@@ -139,7 +139,7 @@ class UserController extends Controller {
 	 * @return Response
 	 */
 	public function updateSeen(
-		Request $request, 
+		Request $request,
 		User $user)
 	{
 		$this->user_gestion->update($request->all(), $user);
@@ -181,7 +181,7 @@ class UserController extends Controller {
 	public function postRoles(RoleRequest $request)
 	{
 		$this->role_gestion->update($request->except('_token'));
-		
+
 		return redirect('user/roles')->with('ok', trans('back/roles.ok'));
 	}
 

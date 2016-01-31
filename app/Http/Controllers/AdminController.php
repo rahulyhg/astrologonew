@@ -43,7 +43,7 @@ class AdminController extends Controller {
 		$nbrPosts = $blog_gestion->getNumber();
 		$nbrComments = $comment_gestion->getNumber();
 
-		return view('back.index', compact('nbrMessages', 'nbrUsers', 'nbrPosts', 'nbrComments'));
+		return view('kadmin.index', compact('nbrMessages', 'nbrUsers', 'nbrPosts', 'nbrComments'));
 	}
 
 	/**
@@ -53,9 +53,10 @@ class AdminController extends Controller {
 	 */
 	public function filemanager()
 	{
+		$path=base_path()."/public_html/";
 		$url = config('medias.url') . '?langCode=' . config('app.locale');
-		
-		return view('back.filemanager', compact('url'));
+
+		return view('kadmin.filemanager', compact('url','path'));
 
 	}
 

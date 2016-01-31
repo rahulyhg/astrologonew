@@ -88,7 +88,7 @@ class ArticlesRepository extends BaseRepository
             ->with('category')
             ->whereHas('category', function ($q) use ($slug) {
                 $q->whereSlug($slug)
-                ->whereActive(true);
+                    ->whereActive(true);
             })
             ->latest();
     }
@@ -103,7 +103,6 @@ class ArticlesRepository extends BaseRepository
     public function indexFront($n, $slug = null)
     {
         if (isset($slug)) {
-
             $query = $this->queryActiveWithUserCategoryOrderByDate($slug);
         } else {
             $query = $this->queryActiveWithUserOrderByDate();
@@ -179,10 +178,13 @@ class ArticlesRepository extends BaseRepository
     {
 
         // $post = $this->model->with('user', 'tags')->whereSlug($slug)->firstOrFail();
-        $post = $this->model->with('user', 'category')->whereSlug($slug)->firstOrFail();
-        //  $post = $this->model->firstOrFail();
 
-        //   dd($post);
+        if (\Cache::has('post' . $slug)) {
+            $post = \Cache::get('post' . $slug);
+        } else {
+            $post = $this->model->with('user', 'category')->whereSlug($slug)->firstOrFail();
+            \Cache::add('post' . $slug, $post, 1);
+        }
 
         $comments = $this->comment
             ->wherePost_id($post->id)

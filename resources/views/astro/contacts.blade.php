@@ -1,20 +1,11 @@
 @extends('astro.template')
-
-
-
+@section('title', trans('astro/contacts.title'))
 @section('main')
 
 
+@include('astro.panel', ['left' => trans('astro/contacts.title'), 'right' => ''])
 
-<!-- BREADCRUMBS -->
-<section class="full_width breadcrumbs_block clearfix">
-    <div class="breadcrumbs_content">
-        <h2 class="pull-left">{{ trans('astro/contacts.title') }}</h2>
-    </div>
-    <div class="overlay"></div>
-    <div class="overlay_black"></div>
-</section>
-<!-- //BREADCRUMBS -->
+
 
 <!-- Contact Info -->
 <section class="contacts_block">
@@ -47,9 +38,12 @@
 
                     @if(!session()->has('ok'))
                     {!! Form::open(['role' => 'form']) !!}
-                    {!! Form::control('text', '', 'name', $errors, trans('astro/contacts.name')) !!}
-                    {!! Form::control('email', '', 'email', $errors, 'E-mail') !!}
-                    {!! Form::control('textarea', '', 'message', $errors, trans('astro/contacts.message')) !!}
+
+                    {!! Form::control('text', '', 'name', $errors, '','','',trans('astro/contacts.name')) !!}
+
+                    {!! Form::control('email', '', 'email', $errors,  '','','','E-mail') !!}
+
+                    {!! Form::control('textarea', '', 'message', $errors, '','','',trans('astro/contacts.message')) !!}
 
                         {!! app('captcha')->display() !!}
                     <br>
@@ -66,7 +60,7 @@
             <h2>{{ trans('astro/contacts.ContactUs') }}</h2>
             <!-- Contact Info -->
             <ul class="list4 contacts_info">
-                <li><b class="glyphicon glyphicon-ok"></b><span><a href="mailto:mail@compname.com" alt="">mail@compname.com</a></span></li>
+                <li><b class="glyphicon glyphicon-ok"></b><span>{{ HTML::mailto('me@gmail.com') }}</span></li>
                 <li><b class="glyphicon glyphicon-ok"></b><span><a href="javascript:void(0);" alt="">{{config('social.twitter')}}</a></span></li>
                 <li><b class="glyphicon glyphicon-ok"></b><span><a href="javascript:void(0);">{{config('social.facebook')}}</a></span></li>
 
