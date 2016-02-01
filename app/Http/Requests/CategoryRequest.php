@@ -14,7 +14,7 @@ class CategoryRequest extends Request {
 
         return [
             'title' => 'required|max:255',
-            'slug' => 'required|unique:categories',
+            'slug' => 'required|unique:categories|min:3',
         ];
     }
 

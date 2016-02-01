@@ -41,6 +41,8 @@
 
                     {!! Form::control('text', '', 'name', $errors, '','','',trans('astro/contacts.name')) !!}
 
+
+
                     {!! Form::control('email', '', 'email', $errors,  '','','','E-mail') !!}
 
                     {!! Form::control('textarea', '', 'message', $errors, '','','',trans('astro/contacts.message')) !!}

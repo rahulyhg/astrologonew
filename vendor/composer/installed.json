@@ -3653,5 +3653,100 @@
             "user agent",
             "useragent"
         ]
+    },
+    {
+        "name": "triasrahman/media-upload",
+        "version": "v1.0.3",
+        "version_normalized": "1.0.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/triasrahman/laravel-media-upload.git",
+            "reference": "52883747f34c876e5ceeca1917834fb1f7e45fa0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/triasrahman/laravel-media-upload/zipball/52883747f34c876e5ceeca1917834fb1f7e45fa0",
+            "reference": "52883747f34c876e5ceeca1917834fb1f7e45fa0",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "5.*",
+            "intervention/image": "~2.0",
+            "php": ">=5.4.0"
+        },
+        "time": "2015-06-12 19:12:52",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Triasrahman\\MediaUpload\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Trias Nur Rahman",
+                "email": "contact@triasrahman.com"
+            }
+        ],
+        "description": "Simple and easy AJAX media upload for Laravel",
+        "keywords": [
+            "ajax",
+            "file",
+            "image",
+            "laravel",
+            "media",
+            "upload"
+        ]
+    },
+    {
+        "name": "lrgt/laravel-form-ajax-validation",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/guicho0601/laravel-form-ajax-validation.git",
+            "reference": "ede887e07eef1afd304cc809f66117ef6febfcba"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/guicho0601/laravel-form-ajax-validation/zipball/ede887e07eef1afd304cc809f66117ef6febfcba",
+            "reference": "ede887e07eef1afd304cc809f66117ef6febfcba",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "5.2.*",
+            "php": ">=5.4.0"
+        },
+        "time": "2016-01-18 23:18:17",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Lrgt\\LaravelFormAjaxValidation": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Luis Ramos",
+                "email": "guicholarg@gmail.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "Make ajax validation with Laravel Requests for forms with bootstrap",
+        "homepage": "https://github.com/guicho0601/laravel-form-ajax-validation",
+        "keywords": [
+            "ajax",
+            "form",
+            "laravel",
+            "validation"
+        ]
     }
 ]

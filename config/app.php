@@ -175,6 +175,8 @@ return [
 		Barryvdh\Debugbar\ServiceProvider::class,
 		Intervention\Image\ImageServiceProvider::class,
 		Jenssegers\Agent\AgentServiceProvider::class,
+		Triasrahman\MediaUpload\MediaUploadServiceProvider::class,
+		Lrgt\LaravelFormAjaxValidation\LaravelFormAjaxValidationServiceProvider::class
 
 	],
 

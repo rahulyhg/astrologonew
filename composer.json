@@ -12,7 +12,9 @@
 		"anhskohbo/no-captcha": "2.*",
         "barryvdh/laravel-debugbar": "^2.1",
         "intervention/image": "^2.3",
-        "jenssegers/agent": "^2.3"
+        "jenssegers/agent": "^2.3",
+        "triasrahman/media-upload": "^1.0",
+		 "lrgt/laravel-form-ajax-validation": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

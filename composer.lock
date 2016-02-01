@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "caedf7b1481499b402fb23ec4906d261",
-    "content-hash": "0a7875fd23a40b3e9e27d5dc8164baee",
+    "hash": "c867c37635da78806baa80307b918cfe",
+    "content-hash": "dcb7573fcb53640de5414be767770e70",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -891,6 +891,51 @@
                 "storage"
             ],
             "time": "2015-12-19 20:16:43"
+        },
+        {
+            "name": "lrgt/laravel-form-ajax-validation",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guicho0601/laravel-form-ajax-validation.git",
+                "reference": "ede887e07eef1afd304cc809f66117ef6febfcba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guicho0601/laravel-form-ajax-validation/zipball/ede887e07eef1afd304cc809f66117ef6febfcba",
+                "reference": "ede887e07eef1afd304cc809f66117ef6febfcba",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.2.*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Lrgt\\LaravelFormAjaxValidation": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Luis Ramos",
+                    "email": "guicholarg@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Make ajax validation with Laravel Requests for forms with bootstrap",
+            "homepage": "https://github.com/guicho0601/laravel-form-ajax-validation",
+            "keywords": [
+                "ajax",
+                "form",
+                "laravel",
+                "validation"
+            ],
+            "time": "2016-01-18 23:18:17"
         },
         {
             "name": "maximebf/debugbar",
@@ -2264,6 +2309,52 @@
             "time": "2015-12-05 11:13:14"
         },
         {
+            "name": "triasrahman/media-upload",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/triasrahman/laravel-media-upload.git",
+                "reference": "52883747f34c876e5ceeca1917834fb1f7e45fa0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/triasrahman/laravel-media-upload/zipball/52883747f34c876e5ceeca1917834fb1f7e45fa0",
+                "reference": "52883747f34c876e5ceeca1917834fb1f7e45fa0",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.*",
+                "intervention/image": "~2.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Triasrahman\\MediaUpload\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Trias Nur Rahman",
+                    "email": "contact@triasrahman.com"
+                }
+            ],
+            "description": "Simple and easy AJAX media upload for Laravel",
+            "keywords": [
+                "ajax",
+                "file",
+                "image",
+                "laravel",
+                "media",
+                "upload"
+            ],
+            "time": "2015-06-12 19:12:52"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v2.2.0",
             "source": {
@@ -3541,7 +3632,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "lrgt/laravel-form-ajax-validation": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
