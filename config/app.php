@@ -176,7 +176,9 @@ return [
 		Intervention\Image\ImageServiceProvider::class,
 		Jenssegers\Agent\AgentServiceProvider::class,
 		Triasrahman\MediaUpload\MediaUploadServiceProvider::class,
-		Lrgt\LaravelFormAjaxValidation\LaravelFormAjaxValidationServiceProvider::class
+		Lrgt\LaravelFormAjaxValidation\LaravelFormAjaxValidationServiceProvider::class,
+		Fx3costa\Laravelchartjs\Providers\ChartjsServiceProvider::class,
+
 
 	],
 
@@ -230,6 +232,7 @@ return [
 		'Debugbar' => Barryvdh\Debugbar\Facade::class,
 		'Image' => Intervention\Image\Facades\Image::class,
 		'Agent' => Jenssegers\Agent\Facades\Agent::class,
+
 	],
 
 ];

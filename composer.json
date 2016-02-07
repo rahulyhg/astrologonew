@@ -14,7 +14,8 @@
         "intervention/image": "^2.3",
         "jenssegers/agent": "^2.3",
         "triasrahman/media-upload": "^1.0",
-		 "lrgt/laravel-form-ajax-validation": "dev-master"
+		 "lrgt/laravel-form-ajax-validation": "dev-master",
+        "fx3costa/laravelchartjs": "^1.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
