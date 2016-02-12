@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6373b077ee1c10e4297eeae294524f7b",
+    "hash": "d5ddf1c97a58d25dc331767bef6a76a0",
     "content-hash": "e93df72a2fecdeda5526bdce0e826462",
     "packages": [
         {
@@ -306,16 +306,16 @@
         },
         {
             "name": "fx3costa/laravelchartjs",
-            "version": "1.3.1",
+            "version": "1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fxcosta/laravel-chartjs.git",
-                "reference": "ae442dcfee2b4b9727b7ff63cd01f0ed68cb251d"
+                "reference": "3d529fe0c65455d985e4c7bf3aef9a4d06602cee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fxcosta/laravel-chartjs/zipball/ae442dcfee2b4b9727b7ff63cd01f0ed68cb251d",
-                "reference": "ae442dcfee2b4b9727b7ff63cd01f0ed68cb251d",
+                "url": "https://api.github.com/repos/fxcosta/laravel-chartjs/zipball/3d529fe0c65455d985e4c7bf3aef9a4d06602cee",
+                "reference": "3d529fe0c65455d985e4c7bf3aef9a4d06602cee",
                 "shasum": ""
             },
             "require": {
@@ -347,7 +347,7 @@
                 "laravel5",
                 "reports"
             ],
-            "time": "2016-01-12 19:43:30"
+            "time": "2016-02-09 03:54:01"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -673,16 +673,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.2.14",
+            "version": "v5.2.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "ce63ba53d4891bdbb5e1aaeced1b5dd34edbc86f"
+                "reference": "78fafb78d35c617e24630f4e099746effc42c787"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/ce63ba53d4891bdbb5e1aaeced1b5dd34edbc86f",
-                "reference": "ce63ba53d4891bdbb5e1aaeced1b5dd34edbc86f",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/78fafb78d35c617e24630f4e099746effc42c787",
+                "reference": "78fafb78d35c617e24630f4e099746effc42c787",
                 "shasum": ""
             },
             "require": {
@@ -797,7 +797,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-02-03 14:19:04"
+            "time": "2016-02-12 14:59:18"
         },
         {
             "name": "laravelcollective/html",
@@ -3019,16 +3019,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.8.22",
+            "version": "4.8.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "dfb11aa5236376b4fc63853cf746af39fe780e72"
+                "reference": "6e351261f9cd33daf205a131a1ba61c6d33bd483"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/dfb11aa5236376b4fc63853cf746af39fe780e72",
-                "reference": "dfb11aa5236376b4fc63853cf746af39fe780e72",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/6e351261f9cd33daf205a131a1ba61c6d33bd483",
+                "reference": "6e351261f9cd33daf205a131a1ba61c6d33bd483",
                 "shasum": ""
             },
             "require": {
@@ -3087,7 +3087,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-02-02 09:01:21"
+            "time": "2016-02-11 14:56:33"
         },
         {
             "name": "phpunit/phpunit-mock-objects",

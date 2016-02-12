@@ -35,9 +35,8 @@
 
 
 
-
                     @if(!session()->has('ok'))
-                    {!! Form::open(['role' => 'form']) !!}
+                    {!! Form::open(['role' => 'form','id'=>'myform']) !!}
 
                     {!! Form::control('text', '', 'name', $errors, '','','',trans('astro/contacts.name')) !!}
 
@@ -54,6 +53,33 @@
 
                     {!! Form::close() !!}
                     @endif
+
+
+                    <form method="post" action="<?=url('save_form')?>" id="myform2">
+                        <input type="hidden" name="_token" value="<?=csrf_token()?>">
+                        <div class="form-group">
+                            <label for="nombre">Name</label>
+                            <input type="text" name="name" id="name" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nombre2">Name</label>
+                            <input type="email" name="email" id="email" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="descripcion">Description</label>
+        <textarea type="text" name="message" id="message" rows="5" class="form-control">
+        </textarea>
+                        </div>
+                        <input type="submit" value="Save" class="btn btn-success">
+                    </form>
+
+
+
+
+
+
 
                 </div>
             </div><!-- //Contact Form -->
@@ -72,6 +98,8 @@
     </div>
 </section><!-- //Contacts Info -->
 
+@include('vendor.lrgt.ajax_script', ['form' => '#myform2',
+ 'request'=>'App/Http/Requests/ContactsRequest'])
 
 
 
