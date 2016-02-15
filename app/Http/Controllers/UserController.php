@@ -25,6 +25,7 @@ class UserController extends Controller {
 	protected $role_gestion;
 
 	/**
+	/**
 	 * Create a new UserController instance.
 	 *
 	 * @param  App\Repositories\UserRepository $user_gestion

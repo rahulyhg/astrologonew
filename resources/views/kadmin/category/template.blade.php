@@ -11,7 +11,7 @@
 		<div class="form-group checkbox pull-right">
 			<label>
 				{!! Form::checkbox('active') !!}
-				{{ trans('back/blog.published') }}
+
 			</label>
 		</div>
 

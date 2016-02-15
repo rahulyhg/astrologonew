@@ -150,13 +150,8 @@ class CategoryRepository extends BaseRepository {
      */
     public function edit($post)
     {
-        $tags = [];
 
-        foreach ($post->tags as $tag) {
-            array_push($tags, $tag->tag);
-        }
-
-        return compact('post', 'tags');
+        return compact('post');
     }
 
     /**
@@ -181,24 +176,8 @@ class CategoryRepository extends BaseRepository {
     {
         $post = $this->savePost($post, $inputs);
 
-        // Tag gestion
-        $tags_id = [];
-        if (array_key_exists('tags', $inputs) && $inputs['tags'] != '') {
 
-            $tags = explode(',', $inputs['tags']);
-
-            foreach ($tags as $tag) {
-                $tag_ref = $this->tag->whereTag($tag)->first();
-                if (is_null($tag_ref)) {
-                    $tag_ref = new $this->tag();
-                    $tag_ref->tag = $tag;
-                    $tag_ref->save();
-                }
-                array_push($tags_id, $tag_ref->id);
-            }
-        }
-
-        $post->tags()->sync($tags_id);
+      //  $post->tags()->sync($tags_id);
     }
 
     /**
@@ -257,7 +236,6 @@ class CategoryRepository extends BaseRepository {
      * @return void
      */
     public function destroy($post) {
-        $post->tags()->detach();
 
         $post->delete();
     }
@@ -283,5 +261,33 @@ class CategoryRepository extends BaseRepository {
     {
         return $this->tag->findOrFail($tag_id)->tag;
     }
+
+
+    /**
+     * Получение списка ВСЕХ категорий  для выпадающего списка
+     *
+     *
+     * @return array
+     */
+    public function showDropdownAll()
+    {
+        return  $this->model->lists('title', 'id');
+
+    }
+
+    /**
+     * Получение списка категорий  для выпадающего списка
+     *
+     *
+     * @return array
+     */
+    public function showDropdown()
+    {
+        return  $this->model->where('active','=','1')->lists('title','id');
+
+    }
+
+
+
 
 }

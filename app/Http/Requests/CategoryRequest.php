@@ -1,11 +1,11 @@
 <?php namespace App\Http\Requests;
 
-use App\Models\Category;
+
 
 class CategoryRequest extends Request {
 
     /**
-     * Get the validation rules that apply to the request.
+     * Правила валидации для категории
      *
      * @return array
      */
@@ -14,7 +14,7 @@ class CategoryRequest extends Request {
 
         return [
             'title' => 'required|max:255',
-            'slug' => 'required|unique:categories|min:3',
+            'slug' => 'required|min:3',
         ];
     }
 

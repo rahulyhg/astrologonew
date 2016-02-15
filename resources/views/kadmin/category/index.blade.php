@@ -47,7 +47,7 @@
 @section('scripts')
 
   <script>
-    
+
     $(function() {
 
 
@@ -93,7 +93,7 @@
           tri = 'asc';
         }
         // Wait icon
-        $('.breadcrumb li').append('<span id="tempo" class="fa fa-refresh fa-spin"></span>');       
+        $('.breadcrumb li').append('<span id="tempo" class="fa fa-refresh fa-spin"></span>');
         // Send ajax
         $.ajax({
           url: '{{ url('kadmin/category/order') }}',

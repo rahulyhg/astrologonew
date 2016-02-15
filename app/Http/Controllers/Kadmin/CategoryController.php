@@ -17,16 +17,16 @@ class CategoryController extends Controller
      *
      * @var App\Repositories\BlogRepository
      */
-    protected $blog_gestion;
+    protected $blog_control;
 
     /**
      * The UserRepository instance.
      *
      * @var App\Repositories\UserRepository
      */
-    protected $user_gestion;
+    protected $user_control;
 
-    protected $category_gestion;
+    protected $category_control;
 
     /**
      * The pagination number.
@@ -38,20 +38,20 @@ class CategoryController extends Controller
     /**
      * Create a new BlogController instance.
      *
-     * @param  App\Repositories\BlogRepository $blog_gestion
-     * @param  App\Repositories\UserRepository $user_gestion
+     * @param  App\Repositories\BlogRepository $blog_control
+     * @param  App\Repositories\UserRepository $user_control
      * @return void
      */
     public function __construct(
-        BlogRepository $blog_gestion,
-        UserRepository $user_gestion,
-        CategoryRepository $category_gestion
+        BlogRepository $blog_control,
+        UserRepository $user_control,
+        CategoryRepository $category_control
     )
     {
-        $this->user_gestion = $user_gestion;
-        $this->blog_gestion = $blog_gestion;
-        $this->category_gestion = $category_gestion;
-        $this->_gestion = $blog_gestion;
+        $this->user_control = $user_control;
+        $this->blog_control = $blog_control;
+        $this->category_control = $category_control;
+        $this->_control = $blog_control;
         $this->nbrPages = 2;
 
         $this->middleware('redac', ['except' => ['indexFront', 'show', 'tag', 'search']]);
@@ -89,17 +89,17 @@ class CategoryController extends Controller
     {
 
         /*
-        $statut = $this->user_gestion->getStatut();
+        $statut = $this->user_control->getStatut();
         */
 
-        $posts = $this->blog_gestion->index(
+        $posts = $this->blog_control->index(
             10,
             null,
             $request->name,
             $request->sens
         );
 
-        $category = $this->category_gestion->index(
+        $category = $this->category_control->index(
             10,
             $request->name,
             $request->sens
@@ -148,60 +148,51 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        $this->category_gestion->store($request->all(), $request);
+        $this->category_control->store($request->all(), $request);
 
         return redirect('kadmin/category')->with('ok', trans('kadmin.articles.stored'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  Illuminate\Contracts\Auth\Guard $auth
-     * @param  string $slug
-     * @return Response
-     */
 
 
     /**
-     * Show the form for editing the specified resource.
+     * Форма редактирование категории
      *
-     * @param  App\Repositories\UserRepository $user_gestion
+     * @param  App\Repositories\UserRepository $user_control
      * @param  int $id
      * @return Response
      */
     public function edit(
-        UserRepository $user_gestion,
+        UserRepository $user_control,
         $id)
     {
-        $post = $this->blog_gestion->getByIdWithTags($id);
 
-        $this->authorize('change', $post);
+        $post = $this->category_control->getById($id);
+        //  $this->authorize('change', $post);
+        return view('kadmin.category.edit', $this->category_control->edit($post));
 
-        $url = config('medias.url');
-
-        return view('kadmin.category.edit', array_merge($this->blog_gestion->edit($post), compact('url')));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Сохраниение категории
      *
      * @param  App\Http\Requests\PostUpdateRequest $request
      * @param  int $id
      * @return Response
      */
     public function update(
-        PostRequest $request,
+        CategoryRequest $request,
         $id)
     {
-        $post = $this->blog_gestion->getById($id);
+        $post = $this->category_control->getById($id);
 
-        $this->authorize('change', $post);
 
-        $this->blog_gestion->update($request->all(), $post);
+      //  $this->authorize('change', $post);
 
-        return redirect('blog')->with('ok', trans('back/blog.updated'));
+        $this->category_control->update($request->all(), $post);
+
+        return redirect('kadmin/category')->with('ok', trans('back/blog.updated'));
     }
-
 
 
     /**
@@ -215,31 +206,29 @@ class CategoryController extends Controller
         Request $request,
         $id)
     {
-        $post = $this->category_gestion->getById($id);
+        $post = $this->category_control->getById($id);
 
-       // $this->authorize('change', $post);
+        // $this->authorize('change', $post);
 
 
-        $this->category_gestion->updateActive($request->all(), $id);
+        $this->category_control->updateActive($request->all(), $id);
 
         return response()->json();
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Удаление категории
      *
      * @param  int $id
      * @return Response
      */
     public function destroy($id)
     {
-        $post = $this->blog_gestion->getById($id);
+        $post = $this->category_control->getById($id);
+        //$this->authorize('change', $post);
+        $this->category_control->destroy($post);
 
-        $this->authorize('change', $post);
-
-        $this->blog_gestion->destroy($post);
-
-        return redirect('blog')->with('ok', trans('back/blog.destroyed'));
+        return redirect('kadmin/category')->with('ok', trans('back/blog.destroyed'));
     }
 }
 

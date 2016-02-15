@@ -1,6 +1,6 @@
 <?php namespace App\Http\Requests;
 
-use App\Models\Post;
+
 
 class PostRequest extends Request {
 
@@ -16,7 +16,8 @@ class PostRequest extends Request {
 			'title' => 'required|max:255',
 			'summary' => 'required|max:65000',
 			'content' => 'required|max:65000',
-			'slug' => 'required|unique:posts,slug' . $id,
+			//'slug' => 'required|unique:posts,slug' . $id,
+			'slug' => 'required',
 			'tags' => 'tags'
 		];
 	}

@@ -14,6 +14,10 @@ class Post extends Model  {
 	 */
 	protected $table = 'posts';
 
+
+
+
+
 	/**
 	 * One to Many relation
 	 *

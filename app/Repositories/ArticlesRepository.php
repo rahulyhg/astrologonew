@@ -226,6 +226,18 @@ class ArticlesRepository extends BaseRepository
     }
 
     /**
+     * Получение статьи с категориями
+     *
+     * @param  int $id
+     * @return array
+     */
+    public function GetByIdWithCategory($id)
+    {
+        return $this->model->with('category')->findOrFail($id);
+    }
+
+
+    /**
      * Update a post.
      *
      * @param  array $inputs
@@ -236,7 +248,7 @@ class ArticlesRepository extends BaseRepository
     {
         $post = $this->savePost($post, $inputs);
 
-        // Tag gestion
+        // Tag control
         $tags_id = [];
         if (array_key_exists('tags', $inputs) && $inputs['tags'] != '') {
 
@@ -299,25 +311,11 @@ class ArticlesRepository extends BaseRepository
     {
         $post = $this->savePost(new $this->model, $inputs, $user_id);
 
-        // Tags gestion
-        if (array_key_exists('tags', $inputs) && $inputs['tags'] != '') {
-
-            $tags = explode(',', $inputs['tags']);
-
-            foreach ($tags as $tag) {
-                $tag_ref = $this->tag->whereTag($tag)->first();
-                if (is_null($tag_ref)) {
-                    $tag_ref = new $this->tag();
-                    $tag_ref->tag = $tag;
-                    $post->tags()->save($tag_ref);
-                } else {
-                    $post->tags()->attach($tag_ref->id);
-                }
-            }
-        }
-
         // Maybe purge orphan tags...
     }
+
+
+
 
     /**
      * Destroy a post.
@@ -353,5 +351,8 @@ class ArticlesRepository extends BaseRepository
     {
         return $this->tag->findOrFail($tag_id)->tag;
     }
+
+
+
 
 }

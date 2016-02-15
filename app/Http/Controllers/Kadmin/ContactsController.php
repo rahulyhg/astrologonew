@@ -25,13 +25,13 @@ class ContactsController extends Controller {
     /**
      * Display a listing of the resource.
      *
-     * @param  ContactRepository $contact_gestion
+     * @param  ContactRepository $contact_control
      * @return Response
      */
     public function index(
-        ContactsRepository $contact_gestion)
+        ContactsRepository $contact_control)
     {
-        $messages = $contact_gestion->index();
+        $messages = $contact_control->index();
 
         return view('kadmin.contacts.index', compact('messages'));
     }
@@ -43,17 +43,17 @@ class ContactsController extends Controller {
     /**
      * Update the specified resource in storage.
      *
-     * @param  App\Repositories\ContactRepository $contact_gestion
+     * @param  App\Repositories\ContactRepository $contact_control
      * @param  Illuminate\Http\Request $request
      * @param  int  $id
      * @return Response
      */
     public function update(
-        ContactsRepository $contact_gestion,
+        ContactsRepository $contact_control,
         Request $request,
         $id)
     {
-        $contact_gestion->update($request->input('seen'), $id);
+        $contact_control->update($request->input('seen'), $id);
 
         return response()->json(['statut' => 'ok']);
     }
@@ -61,15 +61,15 @@ class ContactsController extends Controller {
     /**
      * Remove the specified resource from storage.
      *
-     * @param  App\Repositories\ContactRepository $contact_gestion
+     * @param  App\Repositories\ContactRepository $contact_control
      * @param  int  $id
      * @return Response
      */
     public function destroy(
-        ContactsRepository $contact_gestion,
+        ContactsRepository $contact_control,
         $id)
     {
-        $contact_gestion->destroy($id);
+        $contact_control->destroy($id);
 
         return redirect('kadmin/contacts');
     }

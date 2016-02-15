@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Kadmin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Http\Requests\ContactsRequest;
+
+use App\Http\Requests\PostRequest;
 use App\Repositories\BlogRepository;
 use App\Repositories\UserRepository;
-
+use App\Repositories\CategoryRepository;
 
 class ArticlesController extends Controller
 {
@@ -17,14 +19,14 @@ class ArticlesController extends Controller
      *
      * @var App\Repositories\BlogRepository
      */
-    protected $blog_gestion;
+    protected $blog_control;
 
     /**
      * The UserRepository instance.
      *
      * @var App\Repositories\UserRepository
      */
-    protected $user_gestion;
+    protected $user_control;
 
     /**
      * The pagination number.
@@ -36,16 +38,19 @@ class ArticlesController extends Controller
     /**
      * Create a new BlogController instance.
      *
-     * @param  App\Repositories\BlogRepository $blog_gestion
-     * @param  App\Repositories\UserRepository $user_gestion
+     * @param  App\Repositories\BlogRepository $blog_control
+     * @param  App\Repositories\UserRepository $user_control
      * @return void
      */
     public function __construct(
-        BlogRepository $blog_gestion,
-        UserRepository $user_gestion)
+        BlogRepository $blog_control,
+        UserRepository $user_control,
+        CategoryRepository $category_control
+    )
     {
-        $this->user_gestion = $user_gestion;
-        $this->blog_gestion = $blog_gestion;
+        $this->user_control = $user_control;
+        $this->blog_control = $blog_control;
+        $this->category_control = $category_control;
         $this->nbrPages = 2;
 
         $this->middleware('redac', ['except' => ['indexFront', 'show', 'tag', 'search']]);
@@ -65,7 +70,8 @@ class ArticlesController extends Controller
      *
      * @return Redirection
      */
-    public function index()
+    public
+    function index()
     {
         return redirect(route('kadmin.articles.order', [
             'name' => 'posts.created_at',
@@ -79,10 +85,11 @@ class ArticlesController extends Controller
      * @param  Illuminate\Http\Request $request
      * @return Response
      */
-    public function indexOrder(Request $request)
+    public
+    function indexOrder(Request $request)
     {
-        $statut = $this->user_gestion->getStatut();
-        $posts = $this->blog_gestion->index(
+        $statut = $this->user_control->getStatut();
+        $posts = $this->blog_control->index(
             10,
             $statut == 'admin' ? null : $request->user()->id,
             $request->name,
@@ -112,15 +119,20 @@ class ArticlesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Форма создание статьи
      *
      * @return Response
      */
-    public function create()
+    public
+    function create()
     {
         $url = config('medias.url');
 
-        return view('kadmin.articles.create')->with(compact('url'));
+        //$cat=  Category::where('active','=','1')->lists('title','id'); //Активные категории
+       // $cat = Category::lists('title', 'id'); //Все категории
+       $cat= $this->category_control->showDropdownAll();
+
+        return view('kadmin.articles.create')->with(compact('url', 'cat'));
     }
 
     /**
@@ -129,11 +141,12 @@ class ArticlesController extends Controller
      * @param  App\Http\Requests\PostRequest $request
      * @return Response
      */
-    public function store(PostRequest $request)
+    public
+    function store(PostRequest $request)
     {
-        $this->blog_gestion->store($request->all(), $request->user()->id);
+        $this->blog_control->store($request->all(), $request->user()->id);
 
-        return redirect('kadmin.articles')->with('ok', trans('kadmin.articles.stored'));
+        return redirect('kadmin/articles')->with('ok', trans('kadmin.articles.stored'));
     }
 
     /**
@@ -146,43 +159,45 @@ class ArticlesController extends Controller
 
 
     /**
-     * Show the form for editing the specified resource.
+     * Вывод редактирование статьи
      *
-     * @param  App\Repositories\UserRepository $user_gestion
+     * @param  App\Repositories\UserRepository $user_control
      * @param  int $id
      * @return Response
      */
-    public function edit(
-        UserRepository $user_gestion,
+    public
+    function edit(
+        UserRepository $user_control,
         $id)
     {
-        $post = $this->blog_gestion->getByIdWithTags($id);
+        $post = $this->blog_control->getByIdWithTags($id);
 
         $this->authorize('change', $post);
 
         $url = config('medias.url');
 
-        return view('kadmin.articles.edit', array_merge($this->blog_gestion->edit($post), compact('url')));
+        return view('kadmin.articles.edit', array_merge($this->blog_control->edit($post), compact('url')));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Сохраниение статьи
      *
      * @param  App\Http\Requests\PostUpdateRequest $request
      * @param  int $id
      * @return Response
      */
-    public function update(
+    public
+    function update(
         PostRequest $request,
         $id)
     {
-        $post = $this->blog_gestion->getById($id);
+        $post = $this->blog_control->getById($id);
 
         $this->authorize('change', $post);
 
-        $this->blog_gestion->update($request->all(), $post);
+        $this->blog_control->update($request->all(), $post);
 
-        return redirect('blog')->with('ok', trans('back/blog.updated'));
+        return redirect('kadmin/articles')->with('ok', trans('back/blog.updated'));
     }
 
     /**
@@ -192,11 +207,12 @@ class ArticlesController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function updateSeen(
+    public
+    function updateSeen(
         Request $request,
         $id)
     {
-        $this->blog_gestion->updateSeen($request->all(), $id);
+        $this->blog_control->updateSeen($request->all(), $id);
 
         return response()->json();
     }
@@ -208,15 +224,16 @@ class ArticlesController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function updateActive(
+    public
+    function updateActive(
         Request $request,
         $id)
     {
-        $post = $this->blog_gestion->getById($id);
+        $post = $this->blog_control->getById($id);
 
         $this->authorize('change', $post);
 
-        $this->blog_gestion->updateActive($request->all(), $id);
+        $this->blog_control->updateActive($request->all(), $id);
 
         return response()->json();
     }
@@ -227,13 +244,14 @@ class ArticlesController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function destroy($id)
+    public
+    function destroy($id)
     {
-        $post = $this->blog_gestion->getById($id);
+        $post = $this->blog_control->getById($id);
 
         $this->authorize('change', $post);
 
-        $this->blog_gestion->destroy($post);
+        $this->blog_control->destroy($post);
 
         return redirect('blog')->with('ok', trans('back/blog.destroyed'));
     }

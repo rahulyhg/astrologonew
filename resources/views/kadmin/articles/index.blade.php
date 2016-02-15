@@ -18,7 +18,7 @@
         <thead>
           <tr>
             <th>
-              {{ trans('back/blog.title') }} 
+              {{ trans('back/blog.title') }}
               <a href="#" name="posts.title" class="order">
                 <span class="fa fa-fw fa-{{ $order->name == 'title' ? $order->sens : 'unsorted'}}"></span>
               </a>
@@ -40,7 +40,7 @@
                 <a href="#" name="username" class="order">
                   <span class="fa fa-fw fa-{{ $order->name == 'username' ? $order->sens : 'unsorted'}}"></span>
                 </a>
-              </th>            
+              </th>
               <th>
                 {{ trans('back/blog.seen') }}
                 <a href="#" name="posts.seen" class="order">
@@ -65,7 +65,7 @@
 @section('scripts')
 
   <script>
-    
+
     $(function() {
 
       // Seen gestion
@@ -132,7 +132,7 @@
           tri = 'asc';
         }
         // Wait icon
-        $('.breadcrumb li').append('<span id="tempo" class="fa fa-refresh fa-spin"></span>');       
+        $('.breadcrumb li').append('<span id="tempo" class="fa fa-refresh fa-spin"></span>');
         // Send ajax
         $.ajax({
           url: '{{ url('blog/order') }}',

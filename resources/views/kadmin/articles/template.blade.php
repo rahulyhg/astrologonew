@@ -8,8 +8,8 @@
 
 @section('main')
 
-	<!-- Entête de page -->
-	@include('kadmin.partials.entete', ['title' => trans('back/blog.dashboard'), 'icone' => 'pencil', 'fil' => link_to('kadmin.articles', trans('back/blog.posts')) . ' / ' . trans('back/blog.creation')])
+
+	@include('kadmin.partials.entete', ['title' => trans('back/blog.dashboard'), 'icone' => 'pencil', 'fil' => link_to('kadmin/articles', trans('back/blog.posts')) . ' / ' . trans('back/blog.creation')])
 
 	<div class="col-sm-12">
 		@yield('form')
@@ -31,6 +31,11 @@
 
 		{!! Form::control('textarea', 0, 'summary', $errors, trans('back/blog.summary')) !!}
 		{!! Form::control('textarea', 0, 'content', $errors, trans('back/blog.content')) !!}
+
+
+		{{ Form::select('age', $cat) }}
+
+
 		{!! Form::control('text', 0, 'tags', $errors, trans('back/blog.tags'), isset($tags)? implode(',', $tags) : '') !!}
 
 		{!! Form::submit(trans('front/form.send')) !!}

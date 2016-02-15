@@ -16,14 +16,14 @@ class ArticlesController extends Controller {
 	 *
 	 * @var App\Repositories\BlogRepository
 	 */
-	protected $blog_gestion;
+	protected $blog_control;
 
 	/**
 	 * The UserRepository instance.
 	 *
 	 * @var App\Repositories\UserRepository
 	 */
-	protected $user_gestion;
+	protected $user_control;
 
 	/**
 	 * The pagination number.
@@ -35,16 +35,16 @@ class ArticlesController extends Controller {
 	/**
 	 * Create a new BlogController instance.
 	 *
-	 * @param  App\Repositories\BlogRepository $blog_gestion
-	 * @param  App\Repositories\UserRepository $user_gestion
+	 * @param  App\Repositories\BlogRepository $blog_control
+	 * @param  App\Repositories\UserRepository $user_control
 	 * @return void
 	*/
 	public function __construct(
-		ArticlesRepository $blog_gestion,
-		UserRepository $user_gestion)
+		ArticlesRepository $blog_control,
+		UserRepository $user_control)
 	{
-		$this->user_gestion = $user_gestion;
-		$this->blog_gestion = $blog_gestion;
+		$this->user_control = $user_control;
+		$this->blog_control = $blog_control;
 		$this->nbrPages = 2;
 
 		$this->middleware('redac', ['except' => ['indexFront', 'show', 'tag', 'search']]);
@@ -60,7 +60,7 @@ class ArticlesController extends Controller {
 	public function indexFront($slug=null)
 	{
 
-		$posts = $this->blog_gestion->indexFront($this->nbrPages,$slug);
+		$posts = $this->blog_control->indexFront($this->nbrPages,$slug);
 		$links = $posts->render();
 
 		return view('astro.articles', compact('posts', 'links'));
@@ -87,8 +87,8 @@ class ArticlesController extends Controller {
 	 */
 	public function indexOrder(Request $request)
 	{
-		$statut = $this->user_gestion->getStatut();
-		$posts = $this->blog_gestion->index(
+		$statut = $this->user_control->getStatut();
+		$posts = $this->blog_control->index(
 			10,
 			$statut == 'admin' ? null : $request->user()->id,
 			$request->name,
@@ -137,7 +137,7 @@ class ArticlesController extends Controller {
 	 */
 	public function store(PostRequest $request)
 	{
-		$this->blog_gestion->store($request->all(), $request->user()->id);
+		$this->blog_control->store($request->all(), $request->user()->id);
 
 		return redirect('blog')->with('ok', trans('back/blog.stored'));
 	}
@@ -155,7 +155,7 @@ class ArticlesController extends Controller {
 	{
 		$user = $auth->user();
 
-            return view('astro.article', array_merge($this->blog_gestion->show($slug), compact('user')));
+            return view('astro.article', array_merge($this->blog_control->show($slug), compact('user')));
 
 
 	}
@@ -163,21 +163,21 @@ class ArticlesController extends Controller {
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  App\Repositories\UserRepository $user_gestion
+	 * @param  App\Repositories\UserRepository $user_control
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function edit(
-		UserRepository $user_gestion,
+		UserRepository $user_control,
 		$id)
 	{
-		$post = $this->blog_gestion->getByIdWithTags($id);
+		$post = $this->blog_control->getByIdWithTags($id);
 
 		$this->authorize('change', $post);
 
 		$url = config('medias.url');
 
-		return view('back.blog.edit',  array_merge($this->blog_gestion->edit($post), compact('url')));
+		return view('back.blog.edit',  array_merge($this->blog_control->edit($post), compact('url')));
 	}
 
 	/**
@@ -191,11 +191,11 @@ class ArticlesController extends Controller {
 		PostRequest $request,
 		$id)
 	{
-		$post = $this->blog_gestion->getById($id);
+		$post = $this->blog_control->getById($id);
 
 		$this->authorize('change', $post);
 
-		$this->blog_gestion->update($request->all(), $post);
+		$this->blog_control->update($request->all(), $post);
 
 		return redirect('blog')->with('ok', trans('back/blog.updated'));
 	}
@@ -211,7 +211,7 @@ class ArticlesController extends Controller {
 		Request $request,
 		$id)
 	{
-		$this->blog_gestion->updateSeen($request->all(), $id);
+		$this->blog_control->updateSeen($request->all(), $id);
 
 		return response()->json();
 	}
@@ -227,11 +227,11 @@ class ArticlesController extends Controller {
 		Request $request,
 		$id)
 	{
-		$post = $this->blog_gestion->getById($id);
+		$post = $this->blog_control->getById($id);
 
 		$this->authorize('change', $post);
 
-		$this->blog_gestion->updateActive($request->all(), $id);
+		$this->blog_control->updateActive($request->all(), $id);
 
 		return response()->json();
 	}
@@ -244,11 +244,11 @@ class ArticlesController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		$post = $this->blog_gestion->getById($id);
+		$post = $this->blog_control->getById($id);
 
 		$this->authorize('change', $post);
 
-		$this->blog_gestion->destroy($post);
+		$this->blog_control->destroy($post);
 
 		return redirect('blog')->with('ok', trans('back/blog.destroyed'));
 	}
@@ -262,9 +262,9 @@ class ArticlesController extends Controller {
 	public function tag(Request $request)
 	{
 		$tag = $request->input('tag');
-		$posts = $this->blog_gestion->indexTag($this->nbrPages, $tag);
+		$posts = $this->blog_control->indexTag($this->nbrPages, $tag);
 		$links = $posts->appends(compact('tag'))->render();
-		$info = trans('astro/articles.info-tag') . '<strong>' . $this->blog_gestion->getTagById($tag) . '</strong>';
+		$info = trans('astro/articles.info-tag') . '<strong>' . $this->blog_control->getTagById($tag) . '</strong>';
 
 		return view('front.blog.index', compact('posts', 'links', 'info'));
 	}
@@ -278,7 +278,7 @@ class ArticlesController extends Controller {
 	public function search(SearchRequest $request)
 	{
 		$search = $request->input('search');
-		$posts = $this->blog_gestion->search($this->nbrPages, $search);
+		$posts = $this->blog_control->search($this->nbrPages, $search);
 		$links = $posts->appends(compact('search'))->render();
 		$info = $search;
 

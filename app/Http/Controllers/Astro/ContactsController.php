@@ -18,11 +18,11 @@ class ContactsController extends Controller {
 
     }
 
-//        ContactRepository $contact_gestion,
-    public function store(ContactsRepository $contacts_gestion, ContactsRequest $request)
+//        ContactRepository $contact_control,
+    public function store(ContactsRepository $contacts_control, ContactsRequest $request)
     {
 
-        $contacts_gestion->store($request->all());
+        $contacts_control->store($request->all());
         $req=$request->all();
 
        // print $req[email];// Почта!!!
